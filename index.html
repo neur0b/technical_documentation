@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <meta charset="utf-8">
+    <meta lang="it">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask me about LaTeX</title>
+  </head>
+  <body>
+    <main id="main-doc">
+      <h1>Ask me about LaTeX</h1>
+
+      <nav id="navbar">
+        <header>Una (semplicissima) introduzione a LaTeX</header>
+
+        <a class="nav-link" href="#Che_cos'è_LaTeX">Che cos'è LaTeX</a>
+        <a class="nav-link" href="#Le_classi_di_documento">Le classi di documento</a>
+        <a class="nav-link" href="#Editor_per_LaTeX">Editor per LaTeX</a>
+        <a class="nav-link" href="#Alcune_risorse_utili">Alcune risorse utili</a>
+        <a class="nav-link" href="#Su_di_me">Su di me</a>
+
+
+      </nav>
+
+      <p>Sono sicuro che tutti voi abbiate confidenza con un word processor,
+        d'altronde ci insegano ad utilizzarlo fin dalle scuole medie (più o meno). Il word processor
+        in assoluto più utilizzato è Microsoft Word e le ragioni del suo successo, come spesso accade
+        nel caso di software commerciali, sono esclusivamente legati al marketing e alle strategie
+        di vendita. Esistono molti altri word processor altrettanto validi (impossibile qui non citare
+        <a href="https://it.libreoffice.org/">Libre Office</a>, l'alternativa free e open-source alla 
+        suite di Microsoft), tuttavia oggi proveremo a volgere il nostro sguardo al di là di questo 
+        tipo di software, alla scoperta di altri modi per scrivere, formattare e impaginare testi, modi
+        più efficaci, più eleganti, più pratici e, soprattutto <em>liberi.</em></p>
+
+      <section class="main-section" id="Che_cos'è_LaTeX">
+        <header>Che cos'è LaTeX</header>
+        <p>LaTeX è un <a href="https://it.wikipedia.org/wiki/Linguaggio_di_markup">linguaggio di markup</a>
+        per la preparazione di testi basato sul software di composizione tipografica TeX. 
+        In poche parole è un <em>linguaggio</em> che, interfacciandosi con un software, ci permette
+        di produrre documenti di testo, di formattarli e di impaginarli. Ma che significa che LaTeX
+        è un linguaggio?</p>
+        <p>Significa cioè che ciò che scriviamo </em>non</em> è ciò che vedremo poi sulla pagina. 
+        Ciò che scriviamo è il contenuto del nostro testo corredato da una serie di istruzioni 
+        che saranno poi lette dal software di composizione tipografica TeX. Vediamolo con un esempio: </p>
+        <pre>
+        <code>
+          \documentclass[a4paper,12pt]{article}
+          \usepackage[T1]{fontenc}
+          \usepackage[UTF8]{inputenc}
+          \usepackage[italian]{babel}
+          
+          \title{Impara a scrivere con \LaTeX}
+          \author{Neurob}
+
+          \begin{document}
+
+            \maketitle
+
+            Questo qui è il tuo primo documento \LaTeX{}!
+
+          \end{document}
+
+        </code>
+        </pre>
+
+        <p>Queste righe di codice LaTeX stanno dicendo al software di composizione tipografica che vogliamo
+          scivere un articolo con un carattere che abbia la dimensione di 12pt e le cui pagine 
+          siano in formato a4 (cioè: <code>\documentclass[a4paper,12pt]{article}</code>); dicono inoltre quali codifiche di caratteri
+          e di input vogliamo utilizzare (<code>\usepackage[T1]{fontenc}</code> e <code>\usepackage[UTF8]{inputec}</code>) e che vogliamo
+          le regole di sillabazione italiana (<code>\usepackage[italian]{babel}</code>.)</p>
+
+          <p>Possiamo inoltre specificare il titolo dell'articoo (<code>\title{...}</code>) e l'autore (<code>\author{...}</code>).</p>
+          <p>Tutto ciò che è contenuto tra <code>\begin{document}</code> e <code>\end{document}</code> è ovviamente il corpo del nostro
+          documento, che come prima cosa conterrà un'intestazione con titolo/autore (e se non specificato diversamente anche data) 
+          (<code>\maketitle</code>)</p>
+
+          <p>Tutto questo a prima vista potrebbe sembrare molto complicato, in realtà è più semplice di quanto si pensi, e basta
+            fare soltanto un po' di pratica. Inoltre il <em>preambolo</em> del documento (cioè tutte le righe di codice che precedono
+             <code>\begin{document}</code>) è nella maggiorparte dei casi sempre uguale, per cui possiamo tranquillamente
+             incollarlo ogni volta (attenzione: dobbiamo comunque sapere cosa fa ogni singolo comando, dato che in caso di documento
+             con impostazioni differenti dobbiamo essere in grado di saperle cambiare).
+          </p>
+      </section>
+
+      <section class="main-section" id="Le_classi_di_documento">
+        <header>Le classi di documento</header>
+        <p>Una delle caratteristiche di LaTeX consiste nel fatto che è possibile specificare la <em>classe
+          di documento</em> che si vuole utilizzare, cioè, è possibile (anzi, obbligatorio) informare TeX
+          in merito a <em>che cosa</em> si vuole effettivamente scrivere: se un articolo, un libro etc.
+        </p>
+        <p>Su Microsoft Word (ma anche su LibreOffice Writer) questo non è necessario, tuttavia, dopo aver
+          superato l'iniziale controintuitività della cosa, si intravedono i vantaggi di un approccio 
+          come questo: sapere già che tipo di documento andremo a scrivere ci aiuta a strutturarlo meglio e,
+           di conseguenza, di strutturare meglio il contenuto e - di conseguenza - il nostro stesso pensiero </p>
+        <p>Le principali classi di documento sono</p>
+        <ul>
+          <li>article</li>
+          <li>report</li>
+          <li>book</li>
+          <li>letter</li>
+          <li>slides</li>
+        </ul>
+        <p>Come il nome suggerisce, <code>article</code> viene utilizzato per scrivere articoli, <code>report</code>
+         invece, può essere utilizzato sia per articoli lunghi (che contengono molti capitoli), piccoli libri 
+         o tesi di laurea, <code>book</code> è la classe predefinita per scrivere libri, <code>letter</code>, ovviamente
+         permette di scrivere lettere, <code>slides</code> può essere utilizzato per produrre presentazioni,
+         sebbene sia più conveniente utilizzare il pacchetto <code>beamer</code></p>
+
+         <p>Queste ovviamente non esauriscono tutte le classi di documento che è possibile utilizzare, ne sono
+           disponibili molte altre, e molte altre ancora è possibile installare (come, ad esempio, l'utilissimo
+           "pacchetto" di classi fornito da <a href="https://www.ctan.org/pkg/koma-script">KOMA-Script</a>)
+         </p>
+      </section>
+
+      <section class="main-section" id="Editor_per_LaTeX">
+        <header>Editor per LaTeX</header>
+        <p>Uno dei principali vantaggi di scrivere codice LaTeX è che, appunto, si tratta di puro testo. 
+          Il codice LaTeX non viene pre-formattato, come avviene ad esempio nel caso dei word processor, ma
+          può essere scritto, letto e aperto con <em>qualsiasi</em> editor di testo: possiamo utilizzare il blocco note
+          di Windows, possiamo utilizzare nano o Vim da terminale, possiamo utilizzare anche editor più complessi
+          come VSCode o Sublime Text: la flessibilità offerta da quest'approccio è impressionante. Un file con
+          estensione *.tex sarà <em>sempre</em> leggibile da qualsiasi editor di testo e non è vincolato a nessun
+          formato propietario (cosa che invece succede, ed è effettivamente successa, con i formati proprietari
+          di Microsoft Word). Non esistono versioni "incompatibili" perché, quando scriviamo codice LaTeX, stiamo semplicemente
+          scrivendo del testo, e il testo è leggibile sempre e comunque.
+        </p>
+        <p>
+          Sebbene sia possibile utilizzare qualsivoglia editor di testo, all'inizio della propria avventura con LaTeX
+          può essere utile affidarsi ad un editor dedicato, che renda più semplice scrivere codice LaTeX attraverso scorciatorie,
+          strumenti di inserimento rapido, magari una live-preview del documento etc. I più utilizzati sono:
+        </p>
+
+        <ul>
+          <li>TeXMaker</li>
+          <li>TeXStudio</li>
+          <li>TeXShop</li>
+          <li>Kile</li>
+          <li>TeXnicCenter</li>
+        </ul>
+
+          <p>Occorre menzionare anche <a href="https://www.overleaf.com/">OverLeaf</a>, un editor LaTeX
+          online che permette di lavorare in cloud. Uno dei principali vantaggi di <a href="https://www.overleaf.com/">OverLeaf</a>
+           consiste nel fatto che non è necessario installare in locale una distribuzione TeX.</p>
+
+      </section>
+
+      <section class="main-section" id="Alcune_risorse_utili">
+        <header>Alcune risorse utili</header>
+        <p>Esistono diverse guide in per imparare LaTeX, qui di seguito ne riporteremo alcune:</p>
+
+        <ul>
+          <li><a href="https://it.overleaf.com/learn">Il tutorial sul sito di OverLeaf</a></li>
+          <li><a href="http://www.lorenzopantieri.net/LaTeX_files/LaTeXimpaziente.pdf">LaTeX per l'impaziente</a></li>
+          <li><a href="https://users.dimi.uniud.it/~gianluca.gorni/TeX/itTeXdoc/impara_latex.pdf">Impara LaTeX... e mettilo da parte!</a></li>
+        <ul>
+      </section>
+
+      <section class="main-section" id="Su_di_me">
+        <header>Su di me</header>
+        <p>Ciao, mi chiamo Neurob (puoi trovarmi su <a href="https://livellosegreto.it/web/@neurob">Mastodon</a>, 
+        e ho scritto questa mini-guida solo per esercitarmi con il codice HTML. Dopo le prime due sezioni mi sono scazzato,
+        ecco perché la trattazione si è interrotta bruscamente. Sii comprensivo, sono pigro. </p>
+      </section>
+
+
+    </main>
+
+
+  </body>
+</html>
