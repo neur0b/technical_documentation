@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  
+  body {
+    background-color: #6B6B6B;
+  }
+  
+  .section_header {
+    background-color: #E0E0E0;;
+    display: inline-block;
+    position: relative;
+    bottom: 25px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 4px solid black;
+    font-size: 24px;
+    font-weight: bold;
+  } 
+  
+  .white_square, section {
+    background-color: #E0E0E0;
+    padding: 0px 25px 10px 25px;
+    margin-top: 30px;
+    border-radius: 15px;
+    text-align: justify;
+    border: 4px solid black;
+  }
