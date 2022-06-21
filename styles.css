@@ -17,6 +17,7 @@
     border: 4px solid black;
     font-size: 24px;
     font-weight: bold;
+    z-index: 0;
   } 
   
   .white_square, section {
@@ -26,4 +27,31 @@
     border-radius: 15px;
     text-align: justify;
     border: 4px solid black;
+  }
+
+  #navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    background-color: #E0E0E0;
+    height: 100%;
+  }
+
+  
+#navbar ul {
+  height: 88%;
+  padding: 0;
+  overflow-y: auto; /* ripassare la proprietà overflow */
+  overflow-x: hidden;
+}
+ 
+  #navbar li {
+    list-style: none;
+  }
+
+  #main-doc {
+    position: absolute; /* ripassare la proprietà position */
+    margin-left: 310px;
+    margin-right: 15px;
   }
